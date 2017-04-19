@@ -7,17 +7,35 @@ import $ from 'jquery';
 export default function (maintenanceMode = {}) {
     const header = maintenanceMode.header;
     const notice = maintenanceMode.notice;
+    const password = maintenanceMode.password;
 
     if (!(header && notice)) {
         return;
     }
 
-    const $element = $('<div>', {
-        id: 'maintenance-notice',
-        class: 'maintenanceNotice',
-    });
+    if (password) {
+        const securePath = maintenanceMode.secure_path;
+        const $element = $('<div>', {
+            class: 'adminBar',
+        });
 
-    $element.html(`<p class="maintenanceNotice-header">${header}</p>${notice}`);
+        $element.html(`<div class="adminBarLogo" id="adminBarLogo">
+            <a href="${securePath}/manage/dashboard"><svg><use xlink:href="#logo-small"></use></svg></a></div>
+            <div class="adminBarContent">
+            <a href="${securePath}/manage/theme-editor" target="_blank">Customize Theme</a>
+            <span class="passcode">Share your site with passcode: <a href ="#">${password}</a></span>
+            <span>Your storefront is private.</span>
+            </div>`);
+        $('body').prepend($element);
+    } else {
+        const $element = $('<div>', {
+            id: 'maintenance-notice',
+            class: 'maintenanceNotice',
+        });
 
-    $('body').append($element);
+
+        $element.html(`<p class="maintenanceNotice-header">${header}</p>${notice}`);
+
+        $('body').append($element);
+    }
 }

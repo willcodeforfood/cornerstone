@@ -26,3 +26,56 @@
     font-family: $maintenanceNotice-header-font-family;
     margin: $maintenanceNotice-header-margin;
 }
+
+.adminBar {
+    background-color: $adminBar-color;
+    color: $adminBar-contentLink-color;
+    float: left;
+    font-family: "Source Sans Pro", arial, "sans serif", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    height: 46px;
+    left: 0;
+    position: inherit;
+    text-decoration: none;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+.adminBarLogo {
+    background-color: $adminBar-logo-color;
+    float: left;
+    height: 46px;
+    width: 45px;
+
+    svg {
+        height: 100%;
+        padding: 7px 10px 11px 7px;
+        width: 100%;
+    }
+}
+
+.adminBarContent {
+    margin-left: 45px;
+    padding: 17px 20.5px 14px 20px;
+
+    a {
+        font-weight: 600;
+    }
+
+    span {
+        color: $adminBar-text-color;
+        float: right;
+    }
+}
+
+.passcode {
+    color: $adminBar-text-color;
+    font-weight: 300;
+    padding-left: 9px;
+
+    a {
+        border-bottom: 1px dashed $adminBar-contentLink-color;
+    }
+}
