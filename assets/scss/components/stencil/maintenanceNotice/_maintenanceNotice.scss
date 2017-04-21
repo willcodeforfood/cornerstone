@@ -27,26 +27,50 @@
     margin: $maintenanceNotice-header-margin;
 }
 
+// =============================================================================
+// ADMIN BAR MODE (CSS)
+// =============================================================================
+
+body.hasAdminBar {
+    padding-top: 101px; // 55px (Mobile Header) + 46px (Admin Bar)
+
+    .header {
+        padding-top: $adminBar-height;
+    }
+
+    .navPages-container.is-open {
+        padding-top: 101px;
+    }
+
+    @include breakpoint("medium") {
+        padding-top: 0;
+
+        .header {
+            padding-top: 0;
+        }
+    }
+}
+
 .adminBar {
     background-color: $adminBar-color;
-    color: $adminBar-contentLink-color;
+    color: $adminBar-text-color;
     float: left;
     font-family: "Source Sans Pro", arial, "sans serif", sans-serif;
     font-size: 12px;
     font-weight: 600;
-    height: 46px;
+    height: $adminBar-height;
     left: 0;
-    position: inherit;
+    position: fixed;
     text-decoration: none;
     top: 0;
     width: 100%;
     z-index: 10000;
 }
 
-.adminBarLogo {
+.adminBar-logo {
     background-color: $adminBar-logo-color;
     float: left;
-    height: 46px;
+    height: $adminBar-height;
     width: 45px;
 
     svg {
@@ -56,26 +80,31 @@
     }
 }
 
-.adminBarContent {
+.adminBar-content {
+    align-items: center;
+    display: flex;
+    height: $adminBar-height;
+    justify-content: space-between;
     margin-left: 45px;
     padding: 17px 20.5px 14px 20px;
 
     a {
+        color: $adminBar-contentLink-color;
         font-weight: 600;
-    }
-
-    span {
-        color: $adminBar-text-color;
-        float: right;
+        text-decoration: none;
     }
 }
 
-.passcode {
-    color: $adminBar-text-color;
-    font-weight: 300;
-    padding-left: 9px;
+.adminBar-private {
+    float: right;
+    text-align: right;
 
-    a {
-        border-bottom: 1px dashed $adminBar-contentLink-color;
+    span {
+        white-space: nowrap;
     }
+}
+
+.preview {
+    font-weight: 400;
+    padding-left: 9px;
 }

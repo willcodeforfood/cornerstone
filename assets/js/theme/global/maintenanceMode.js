@@ -19,13 +19,17 @@ export default function (maintenanceMode = {}) {
             class: 'adminBar',
         });
 
-        $element.html(`<div class="adminBarLogo" id="adminBarLogo">
+        $element.html(`<div class="adminBar-logo">
             <a href="${securePath}/manage/dashboard"><svg><use xlink:href="#logo-small"></use></svg></a></div>
-            <div class="adminBarContent">
-            <a href="${securePath}/manage/theme-editor" target="_blank">Customize Theme</a>
-            <span class="passcode">Share your site with passcode: <a href ="#">${password}</a></span>
-            <span>Your storefront is private.</span>
+            <div class="adminBar-content">
+                <a href="${securePath}/manage/theme-editor" target="_blank">Customize Theme</a>
+                <div class="adminBar-private">
+                    <span>Your storefront is private.</span>
+                    <span class="preview">Share your site with preview code: ${password}</span>
+                </div>
             </div>`);
+
+        $('body').addClass('hasAdminBar');
         $('body').prepend($element);
     } else {
         const $element = $('<div>', {
