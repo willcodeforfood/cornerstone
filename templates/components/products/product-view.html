@@ -244,6 +244,11 @@
                 {{#if product.can_purchase}}
                     {{> components/products/add-to-cart}}
                 {{/if}}
+
+                {{#unless product.can_purchase}}
+                    {{> components/call-for-out-of-stock/content}}
+                {{/unless}}
+
                 {{#if product.out_of_stock}}
                     {{#if product.out_of_stock_message}}
                         {{> components/common/alert-error product.out_of_stock_message}}

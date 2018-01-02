@@ -2587,5 +2587,15 @@
         "id": "amp_analytics_id"
       }
     ]
+  },
+  {
+    "name": "Ringers Customizations",
+    "settings": [
+      {
+        "type": "text",
+        "label": "Wholesale Customer Group Ids",
+        "id": "wholesale_customer_group_ids"
+      }
+    ]
   }
 ]
