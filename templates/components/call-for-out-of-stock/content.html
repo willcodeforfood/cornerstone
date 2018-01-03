@@ -7,8 +7,15 @@
 (function(){
 	try {
 		var jsContext = JSON.parse({{jsContext}});
-		var customerGroupIdsArray = jsContext['wholesale_group_ids'].split(',');
-		// ToDo: handle an optional space the client might have added before or after a comma...
+		
+		if(jsContext && jsContext['current_customer_group'] === null) {
+			//console.log("Customer not logged in.");
+			return;
+		}
+		var customerGroupIdsArray = jsContext['wholesale_group_ids']
+			.split(',')
+			.map(Function.prototype.call, String.prototype.trim);
+
 		var currentCustomerGroupAsString = jsContext['current_customer_group'].toString();
 
 		// Where the magic happens...
