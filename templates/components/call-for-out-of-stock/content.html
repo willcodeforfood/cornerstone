@@ -1,0 +1,38 @@
+{{inject "wholesale_group_ids" theme_settings.wholesale_customer_group_ids}}
+{{inject "current_customer_group" customer.customer_group_id}}
+
+<a style="display: none;" href="tel:{{settings.phone_number}}" class="button call-to-order-link" type="button">Call us at {{settings.phone_number}}</a>
+
+<script>
+(function(){
+	try {
+		var jsContext = JSON.parse({{jsContext}});
+		
+		if(jsContext && jsContext['current_customer_group'] === null) {
+			//console.log("Customer not logged in.");
+			return;
+		}
+		var customerGroupIdsArray = jsContext['wholesale_group_ids']
+			.split(',')
+			.map(Function.prototype.call, String.prototype.trim);
+
+		var currentCustomerGroupAsString = jsContext['current_customer_group'].toString();
+
+		// Where the magic happens...
+		if(customerGroupIdsArray.indexOf(currentCustomerGroupAsString) !== -1) {
+			showCallUsButton();
+		}
+	} catch(e) {
+		console.log("Exception when dealing with call-us button:", e);
+	}
+
+	function showCallUsButton() {
+		var buttons = document.querySelectorAll('a.call-to-order-link');
+		
+		Array.prototype.forEach.call(buttons, function(element) {
+			element.style.removeProperty('display');
+		});
+	}
+
+}());
+</script>
