@@ -5,9 +5,9 @@
     "footer": {
         "brands": "Popular Brands",
         "navigate": "Navigate",
-        "info": "Info",
-        "categories": "Categories",
-        "call_us": "Call us at {phone_number}"
+        "info": "Contact Us",
+        "categories": "Shop Gloves",
+        "call_us": "{phone_number}"
     },
     "home": {
         "heading": "Home"

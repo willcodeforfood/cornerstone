@@ -17,10 +17,20 @@ category:
 {{#partial "page"}}
 
 {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
 {{#if category.image}}
+<div class="category-image">
     <img class="lazyload" data-sizes="auto" src="{{cdn 'img/loading.svg'}}" data-src="{{getImage category.image 'zoom_size'}}">
-{{/if}}
+    <div class="category-image-caption">
+        <div class="container">
+        <h1 class="page-heading">{{category.name}}</h1>
+        </div>
+    </div>
+</div>
+{{else}}
 <h1 class="page-heading">{{category.name}}</h1>
+{{/if}}
+
 {{{category.description}}}
 {{{snippet 'categories'}}}
 <div class="page">
